@@ -10,7 +10,9 @@ public class LightingManager : MonoBehaviour
 {
     //Scene References
     [SerializeField] private Light DirectionalLight;
-    [SerializeField] private LightingPreset Preset;
+    [SerializeField] Gradient AmbientColor;
+    [SerializeField] Gradient FogColor;
+    [SerializeField] Gradient DirectionalColor;
     //Variables
     [SerializeField, Range(0, 24)] public static float TimeOfDay;
     [SerializeField, Range(-10, 10)] private float speedMultiplier;  // used to adjust the cycle time. Note that values < 0 will reverse it!
@@ -35,9 +37,6 @@ public class LightingManager : MonoBehaviour
 
     private void Update()
     {
-
-        if (Preset == null)
-            return;
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -88,13 +87,13 @@ public class LightingManager : MonoBehaviour
     private void UpdateLighting(float timePercent)
     {
         //Set ambient and fog
-        RenderSettings.ambientLight = Preset.AmbientColor.Evaluate(timePercent);
-        RenderSettings.fogColor = Preset.FogColor.Evaluate(timePercent);
+        RenderSettings.ambientLight = AmbientColor.Evaluate(timePercent);
+        RenderSettings.fogColor = FogColor.Evaluate(timePercent);
 
         //If the directional light is set then rotate and set it's color, I actually rarely use the rotation because it casts tall shadows unless you clamp the value
         if (DirectionalLight != null)
         {
-            DirectionalLight.color = Preset.DirectionalColor.Evaluate(timePercent);
+            DirectionalLight.color = DirectionalColor.Evaluate(timePercent);
 
             DirectionalLight.transform.localRotation = Quaternion.Euler(new Vector3((timePercent * 360f) - 90f, 170f, 0));
         }
