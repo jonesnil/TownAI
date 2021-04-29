@@ -1,0 +1,26 @@
+tree("Root")
+	fallback
+		sequence
+			IsNightTime
+			SetDestinationFarmerHome
+			MoveToNewDestination
+		sequence
+			Hungry
+			SetDestinationMarket
+			MoveToNewDestination
+			Eat
+		sequence
+			EncumberedWithResource
+			SetDestinationMill
+			MoveToNewDestination
+			DumpResource
+		sequence
+			Demotivated
+			SetDestinationChurch
+			MoveToNewDestination
+			Hear
+		sequence
+			SetDestinationFarm
+			MoveToNewDestination
+			GainResource
+

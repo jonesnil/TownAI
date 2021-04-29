@@ -12,7 +12,7 @@ public class LightingManager : MonoBehaviour
     [SerializeField] private Light DirectionalLight;
     [SerializeField] private LightingPreset Preset;
     //Variables
-    [SerializeField, Range(0, 24)] private float TimeOfDay;
+    [SerializeField, Range(0, 24)] public static float TimeOfDay;
     [SerializeField, Range(-10, 10)] private float speedMultiplier;  // used to adjust the cycle time. Note that values < 0 will reverse it!
     [SerializeField, Range(1, 10)] private float nightSpeed; // how much to speed up late-night hours
     [SerializeField] private float maxIntensity = 1.5f;
@@ -35,8 +35,14 @@ public class LightingManager : MonoBehaviour
 
     private void Update()
     {
+
         if (Preset == null)
             return;
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
 
         if (Application.isPlaying)
         {
@@ -95,6 +101,7 @@ public class LightingManager : MonoBehaviour
 
     }
 
+    /*
     //Try to find a directional light to use if we haven't set one
     private void OnValidate()
     {
@@ -120,4 +127,5 @@ public class LightingManager : MonoBehaviour
             }
         }
     }
+    */
 }

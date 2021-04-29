@@ -1,0 +1,15 @@
+tree("Root")
+	fallback
+		sequence
+			IsNightTime
+			SetDestinationPriestHome
+			MoveToNewDestination
+		sequence
+			Hungry
+			SetDestinationMarket
+			MoveToNewDestination
+			Eat
+		sequence
+			SetDestinationChurch
+			MoveToNewDestination
+
