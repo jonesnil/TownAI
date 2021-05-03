@@ -2,25 +2,16 @@ tree("Root")
 	fallback
 		sequence
 			IsNightTime
-			SetDestinationMinerHome
-			MoveToNewDestination
+			MakePlanGoHome
 		sequence
 			Hungry
-			SetDestinationMarket
-			MoveToNewDestination
-			Eat
+			MakePlanQuenchHunger
 		sequence
 			EncumberedWithResource
-			SetDestinationSmith
-			MoveToNewDestination
-			DumpResource
+			MakePlanDumpResource
 		sequence
 			Demotivated
-			SetDestinationChurch
-			MoveToNewDestination
-			Hear
+			MakePlanBecomeMotivated
 		sequence
-			SetDestinationMine
-			MoveToNewDestination
-			GainResource
+			MakePlanMine
 
