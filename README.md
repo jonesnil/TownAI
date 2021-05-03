@@ -27,3 +27,17 @@ to the mill to drop off a harvest. The miner is similar except he mines and drop
 ore off at the blacksmith every so often.
 
 All the behavior trees were implemented using Panda BT.
+
+5/2/2021
+
+GOAP update!!!
+
+This update provides almost zero change to the behavior of the townspeople, but
+it does provide a lot of potential for their AI going forward. 
+
+2 of the 3 townspeople are thinking normally, but something is off about the miner...
+he's scheming. Instead of his behavior tree explicitly telling him what to do, it's 
+only telling him when he has a need that should be met. Using different actions stored
+in his PandaBT script, he considers his position and comes up with a plan of action
+to satisfy his goal. His behaviors look about the same, but if you look under the hood
+into his C# file and his behavior tree you can see how he's making decisions now.
